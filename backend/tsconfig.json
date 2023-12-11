@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "strict": true,
+    // NYTT -------
+    "esModuleInterop": true
+    // --------------
+  }
+}
