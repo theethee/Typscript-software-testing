@@ -1,0 +1,29 @@
+#footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #39446b;
+  width: 100%;
+  box-sizing: border-box;
+  color: #ffff;
+  padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /* text-align: center; */
+  justify-content: center;
+}
+
+#align-icons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  margin-top: 250px;
+}
+
+.icons {
+  margin-bottom: 5px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
