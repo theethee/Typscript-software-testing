@@ -20,10 +20,6 @@ function Footer() {
           <p className="p-styling">Terms of use</p>
           <p className="p-styling">Cookies</p>
         </div>
-        {/* <div id="align-icons">
-          <img className="icons" src={linkedin} alt="linkedin icon" />
-          <img className="icons" src={twitter} alt="twitter icon" />
-        </div> */}
       </div>
     </>
   );
