@@ -10,10 +10,9 @@ function Home() {
         <p className="input-text">Password</p>
         <input className="sign-in-field" type="password" />
         <a>Forgot your passowrd?</a>
-        <input id="sign-in-button" type="submit" value="Sign in" />
-        <p>
-          No account? <a>Register here</a>
-        </p>
+        <button id="sign-in-button">Sing in</button>
+        {/* ska vara en länk här */}
+        <a>No account? Register here</a>
       </div>
     </>
   );

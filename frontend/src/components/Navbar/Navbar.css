@@ -4,8 +4,8 @@
 }
 
 #NexGen-nav {
-  font-size: 40px;
-  margin-left: 5%;
+  font-size: 35px;
+  margin-left: 5px;
 }
 
 #align-input-field {
@@ -20,8 +20,8 @@
 }
 
 #input-field {
-  width: 100%;
-  height: 60px;
+  width: 331px;
+  height: 63px;
   border-radius: 40px;
   background-color: #d9d9d9;
   padding-left: 60px;
@@ -34,17 +34,24 @@
   left: 80%;
   top: 50%;
   transform: translateY(-50%);
-  width: 35px;
+  width: 50px;
+  height: 50px;
 }
 
 .icons-nav {
   margin-top: 10px;
-  width: 80px;
-  height: 80px;
+  width: 51px;
+  height: 48px;
+  cursor: pointer;
+}
+
+#account-icon {
+  margin-right: 30px;
 }
 
 #align-icons-nav {
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
-  margin-left: auto;
+  margin-left: 50px;
 }

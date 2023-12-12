@@ -16,7 +16,12 @@ function Navbar() {
         </div>
 
         <div id="align-icons-nav">
-          <img className="icons-nav" src={account} alt="accoutn icon" />
+          <img
+            id="account-icon"
+            className="icons-nav"
+            src={account}
+            alt="accoutn icon"
+          />
           <img className="icons-nav" src={burger} alt="burger menu icon" />
         </div>
       </div>
