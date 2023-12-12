@@ -9,10 +9,10 @@ function Home() {
         <input id="field-gap" className="sign-in-field" type="text" />
         <p className="input-text">Password</p>
         <input className="sign-in-field" type="password" />
-        <a>Forgot your passowrd?</a>
+        <a className="links">Forgot your password?</a>
         <button id="sign-in-button">Sing in</button>
         {/* ska vara en länk här */}
-        <a>No account? Register here</a>
+        <a className="links">No account? Register here</a>
       </div>
     </>
   );

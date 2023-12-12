@@ -9,6 +9,10 @@
   margin-bottom: 10px;
 }
 
+.input-text {
+  font-size: 25px;
+}
+
 .sign-in-field {
   border-radius: 40px;
   background-color: #a6bff0;
@@ -20,7 +24,7 @@
 }
 
 #sign-in-button {
-  margin-top: 20px;
+  margin-top: 35px;
   border-radius: 40px;
   background-color: #4164c0;
   border: none;
@@ -28,4 +32,8 @@
   height: 75px;
   font-size: 30px;
   cursor: pointer;
+}
+
+.links {
+  font-size: 20px;
 }
