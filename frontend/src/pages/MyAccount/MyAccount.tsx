@@ -8,6 +8,7 @@ import deleteAccount from "../../assets/delete-icon-red.png";
 function MyAccount() {
   return (
     <>
+      {/* Ändra till formulär! */}
       <div id="my-account-container">
         <h1>NexGen</h1>
         <h3>My account</h3>
