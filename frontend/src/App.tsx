@@ -2,7 +2,9 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 // import Home from "./pages/Home/Home";
-import Landing from "./pages/LandingPage/Landing";
+// import Landing from "./pages/LandingPage/Landing";
+import MyAccount from "./pages/MyAccount/MyAccount";
+
 // Här ska navigationen vara så småningom
 
 function App() {
@@ -10,7 +12,8 @@ function App() {
     <>
       <Navbar></Navbar>
       {/* <Home></Home> */}
-      <Landing></Landing>
+      {/* <Landing></Landing> */}
+      <MyAccount></MyAccount>
       <Footer></Footer>
     </>
   );

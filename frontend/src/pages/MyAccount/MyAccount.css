@@ -1,0 +1,70 @@
+#my-account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#no-img-picked {
+  width: 200px;
+  height: 200px;
+}
+
+#add-img {
+  width: 50px;
+  cursor: pointer;
+}
+
+#align-add-img {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 150px;
+}
+
+.change-icon {
+  width: 36px;
+  height: 40px;
+}
+
+.align-info {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.align-info img {
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.p-styling {
+  font-size: 30px;
+}
+
+.align-under-p {
+  display: flex;
+  flex-direction: row;
+}
+
+#delete-account-button {
+  background-color: #e12a35;
+  border-radius: 40px;
+  border: none;
+  width: 446px;
+  height: 95px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#align-delete-account-button {
+  margin-top: 40px;
+}
+
+#delete-icon-red {
+  width: 59px;
+  height: 52px;
+  margin-left: 30px;
+}
