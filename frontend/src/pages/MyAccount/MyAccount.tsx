@@ -20,6 +20,7 @@ function MyAccount() {
         <div id="align-add-img">
           <img id="add-img" src={addImg} alt="icon to add image" />
         </div>
+
         <div id="change-personinfo">
           <div className="align-info">
             <p className="p-styling">[Username]</p>
