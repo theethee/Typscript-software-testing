@@ -6,6 +6,7 @@
 #NexGen-nav {
   font-size: 35px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 #align-input-field {

@@ -3,19 +3,41 @@ import search from "../../assets/search-icon.png";
 import account from "../../assets/account-icon.png";
 import burger from "../../assets/burger-menu.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isBurgerOpen, setisBugerOpen] = useState<boolean>(false);
+  const [isAccountIconClicked, setIsAccountIconClicked] =
+    useState<boolean>(false);
+  const [isNexgenClicked, setIsNexGenClicked] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  // När man är inloggad ska man komma till all courses
+  const handleNexGen = () => {
+    setIsNexGenClicked(!isNexgenClicked);
+    console.log("NexGen is clicked");
+    navigate("/");
+  };
 
   const handleBurger = () => {
     setisBugerOpen(!isBurgerOpen);
   };
 
+  // MEN BARA OM MAN ÄR INLOGGAD!
+  // Måste ändra senare!
+  const handleAccount = () => {
+    setIsAccountIconClicked(!isAccountIconClicked);
+    console.log("click");
+    navigate("/myaccount");
+  };
+
   return (
     <>
       <div id="navbar-container">
-        <h1 id="NexGen-nav">NexGen</h1>
+        <h1 id="NexGen-nav" onClick={handleNexGen}>
+          NexGen
+        </h1>
         <div id="align-input-field">
           <div id="input-container">
             <input id="input-field" type="search" />
@@ -29,6 +51,7 @@ function Navbar() {
             className="icons-nav"
             src={account}
             alt="accoutn icon"
+            onClick={handleAccount}
           />
           <img
             className="icons-nav"
