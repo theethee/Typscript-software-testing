@@ -55,3 +55,29 @@
   flex-direction: row;
   margin-left: 50px;
 }
+
+#burger-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 810px;
+  height: 650px;
+}
+
+.style-links-nav {
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #615e5e;
+}
+
+.style-links-nav:hover {
+  color: rgb(40, 39, 39);
+}
