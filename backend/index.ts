@@ -20,6 +20,8 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json());
+
 // GET
 app.get("/api/users", async (_req, res) => {
   try {
@@ -32,10 +34,18 @@ app.get("/api/users", async (_req, res) => {
 });
 
 //POST
-app.post("/api/createuser", async (req, res) => {
-  const postUserInfo = req.body;
+app.post("/api/users", async (req, res) => {
   try {
+    const postUserInfo = req.body;
+
+    console.log("postUserInfo", postUserInfo);
+
+    if (!postUserInfo) {
+      return res.status(400).send("Ingen användarinfo skickad");
+    }
+
     const { firstname, lastname, email, username, password } = postUserInfo;
+
     if (!firstname || !lastname || !email || !username || !password) {
       return res.status(400).send("Alla fält är inte ifyllda");
     }
