@@ -14,10 +14,16 @@
 .styling-reg-input {
   background-color: #d9d9d9;
   border: none;
-  width: 328px;
+  width: 338px;
   height: 75px;
   border-radius: 40px;
   font-size: 30px;
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+
+.styling-reg-input:focus {
+  outline: none;
 }
 
 #styling-reg-button {
@@ -28,6 +34,7 @@
   height: 75px;
   border-radius: 40px;
   font-size: 30px;
+  cursor: pointer;
 }
 
 .reg-label {
