@@ -11,6 +11,13 @@
 
 .input-text {
   font-size: 25px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#home-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .sign-in-field {
@@ -36,4 +43,6 @@
 
 .links {
   font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
 }
