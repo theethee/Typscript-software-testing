@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Landing from "./pages/LandingPage/Landing";
 import Register from "./pages/Register/Register";
 import MyAccount from "./pages/MyAccount/MyAccount";
+import SignedOut from "./pages/SignedOut/SignedOut";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/htmlandcss" element={<HtmlAndCss />} />
           <Route path="/javascript" element={<Javascript />} />
           <Route path="/typescript" element={<Typescript />} />
+          <Route path="/signedout" element={<SignedOut />} />
         </Routes>
         <Footer />
       </Router>

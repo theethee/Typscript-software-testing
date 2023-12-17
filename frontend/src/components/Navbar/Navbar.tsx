@@ -10,6 +10,7 @@ function Navbar() {
   const [isAccountIconClicked, setIsAccountIconClicked] =
     useState<boolean>(false);
   const [isNexgenClicked, setIsNexGenClicked] = useState<boolean>(false);
+  const [isSignOutClicked, setIsSignedOutClicked] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,12 @@ function Navbar() {
     setIsAccountIconClicked(!isAccountIconClicked);
     console.log("click");
     navigate("/myaccount");
+  };
+
+  const handleSignOut = () => {
+    setIsSignedOutClicked(!isSignOutClicked);
+    console.log("Sign out button is clicked");
+    navigate("/signedout");
   };
 
   return (
@@ -80,7 +87,9 @@ function Navbar() {
             <Link to="/typescript" className="style-links-nav">
               Typescript
             </Link>
-            {/* <Link to="/">Sign out</Link> */}
+            <button id="sign-out-btn" onClick={handleSignOut}>
+              Sign out
+            </button>
           </div>
         )}
       </div>

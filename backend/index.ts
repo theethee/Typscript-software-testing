@@ -76,7 +76,7 @@ app.get("/api/accounts", async (_req, res) => {
     const { rows } = await client.query("SELECT * FROM accounts");
     res.json(rows);
   } catch (error) {
-    console.error("Vaning gick inte att fetcha courses: ", error);
+    console.error("Varning gick inte att fetcha accounts: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -86,7 +86,7 @@ app.get("/api/courses", async (_req, res) => {
     const { rows } = await client.query("SELECT * FROM courses");
     res.json(rows);
   } catch (error) {
-    console.error("Vaning gick inte att fetcha courses: ", error);
+    console.error("Varning gick inte att fetcha courses: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -96,7 +96,7 @@ app.get("/api/videos", async (_req, res) => {
     const { rows } = await client.query("SELECT * FROM videos");
     res.json(rows);
   } catch (error) {
-    console.error("Vaning gick inte att fetcha videos: ", error);
+    console.error("Varning gick inte att fetcha videos: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

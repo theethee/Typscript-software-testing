@@ -66,7 +66,7 @@
   margin-top: 90px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 810px;
-  height: 650px;
+  height: 750px;
 }
 
 .style-links-nav {
@@ -81,4 +81,15 @@
 
 .style-links-nav:hover {
   color: rgb(40, 39, 39);
+}
+
+#sign-out-btn {
+  margin-top: 35px;
+  border-radius: 40px;
+  background-color: #4164c0;
+  border: none;
+  width: 336px;
+  height: 75px;
+  font-size: 30px;
+  cursor: pointer;
 }
