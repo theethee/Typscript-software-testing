@@ -4,19 +4,27 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NotSignedInPopup from "../../components/Popup/NotSignedIn";
 
-interface HomeProps {}
+interface HomeProps {
+  handleSignIn: () => void;
+}
 
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [showNotSignedIn, setShowNotSignedIn] = useState(false);
+  const [isRegLinkClicked, setIsRegLinkClicked] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleSignInPopup = () => {
     setShowNotSignedIn(false);
   };
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+  const navigateToReg = () => {
+    setIsRegLinkClicked(!isRegLinkClicked);
+    navigate("/register");
+  };
+
+  const handleSignInSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("handle submit in HOME");
 
@@ -37,6 +45,7 @@ const Home: React.FC<HomeProps> = () => {
         const data = await res.json();
         localStorage.setItem("user", JSON.stringify(data));
         localStorage.setItem("isSignedIn", "true");
+        handleSignIn();
         navigate("/landingpage");
       } else {
         console.error("Fel användare eller löseornd");
@@ -72,8 +81,10 @@ const Home: React.FC<HomeProps> = () => {
     <>
       <div id="home-container">
         <h1>NexGen</h1>
-        <form onSubmit={handleSignIn} id="home-form">
-          <label className="input-text">Username/emal</label>
+        <form onSubmit={handleSignInSubmit} id="home-form">
+          <label className="input-text" htmlFor="username">
+            Username/emal
+          </label>
           <input
             id="field-gap"
             className="sign-in-field"
@@ -83,7 +94,9 @@ const Home: React.FC<HomeProps> = () => {
             onChange={(e) => setUserName(e.target.value)}
             required
           />
-          <label className="input-text">Password</label>
+          <label className="input-text" htmlFor="password">
+            Password
+          </label>
           <input
             className="sign-in-field"
             type="password"
@@ -95,7 +108,9 @@ const Home: React.FC<HomeProps> = () => {
           <a className="links">Forgot your password?</a>
           <button id="sign-in-button">Sign in</button>
           {/* ska vara en länk här */}
-          <a className="links">No account? Register here</a>
+          <a className="links" onClick={navigateToReg}>
+            No account? Register here
+          </a>
         </form>
         {showNotSignedIn && (
           <NotSignedInPopup onClose={handleSignInPopup}></NotSignedInPopup>

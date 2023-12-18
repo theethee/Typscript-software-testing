@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../Register/Register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -7,6 +8,14 @@ function Register() {
   const [Email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [PassWord, setPassWord] = useState("");
+  const [isBackToSignInClicked, setBackToSignInClicked] =
+    useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleBackToSignIn = () => {
+    setBackToSignInClicked(!isBackToSignInClicked);
+    navigate("/");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -122,6 +131,12 @@ function Register() {
           /> */}
 
           <button id="styling-reg-button">Submit</button>
+          <a
+            style={{ marginTop: "20px", cursor: "pointer", fontSize: "20px" }}
+            onClick={handleBackToSignIn}
+          >
+            Back to sign in
+          </a>
         </form>
       </div>
     </>

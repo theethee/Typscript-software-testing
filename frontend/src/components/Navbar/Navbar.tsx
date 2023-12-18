@@ -7,11 +7,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 // Fixa kontroll om man är inloggad eller utloggad här?
 
+// interface NavbarProps {
+//   isSignedIn: boolean;
+//   handleSignOut: () => void;
+// }
+
 function Navbar() {
   const [isBurgerOpen, setisBugerOpen] = useState<boolean>(false);
+
   const [isAccountIconClicked, setIsAccountIconClicked] =
     useState<boolean>(false);
+
   const [isNexgenClicked, setIsNexGenClicked] = useState<boolean>(false);
+
   const [isSignOutClicked, setIsSignedOutClicked] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -35,7 +43,7 @@ function Navbar() {
     navigate("/myaccount");
   };
 
-  const handleSignOut = () => {
+  const handleSignOutSubmit = () => {
     setIsSignedOutClicked(!isSignOutClicked);
     console.log("Sign out button is clicked");
     localStorage.removeItem("isSignedIn");
@@ -91,7 +99,7 @@ function Navbar() {
             <Link to="/typescript" className="style-links-nav">
               Typescript
             </Link>
-            <button id="sign-out-btn" onClick={handleSignOut}>
+            <button id="sign-out-btn" onClick={handleSignOutSubmit}>
               Sign out
             </button>
           </div>

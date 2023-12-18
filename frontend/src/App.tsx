@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import Typescript from "./pages/AllCourses/Typescript";
@@ -11,25 +11,56 @@ import Landing from "./pages/LandingPage/Landing";
 import Register from "./pages/Register/Register";
 import MyAccount from "./pages/MyAccount/MyAccount";
 import SignedOut from "./pages/SignedOut/SignedOut";
+import { useState } from "react";
+
+const PrivateRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
+  const isSignedIn = localStorage.getItem("isSignedIn") === "true";
+  return isSignedIn ? <>{element}</> : <Navigate to="/" />;
+};
 
 function App() {
+  const [_isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    setIsSignedIn(true);
+    localStorage.setItem("isSignedIn", "true");
+    navigate("landingpage");
+  };
+
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/landingpage" element={<Landing />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/myaccount" element={<MyAccount />} />
-          <Route path="/allcourses" element={<AllCourses />} />
-          <Route path="/htmlandcss" element={<HtmlAndCss />} />
-          <Route path="/javascript" element={<Javascript />} />
-          <Route path="/typescript" element={<Typescript />} />
-          <Route path="/signedout" element={<SignedOut />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home handleSignIn={handleSignIn} />} />
+        <Route
+          path="/landingpage"
+          element={<PrivateRoute element={<Landing />} />}
+        />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/myaccount"
+          element={<PrivateRoute element={<MyAccount />} />}
+        />
+        <Route
+          path="/allcourses"
+          element={<PrivateRoute element={<AllCourses />} />}
+        />
+        <Route
+          path="/htmlandcss"
+          element={<PrivateRoute element={<HtmlAndCss />} />}
+        />
+        <Route
+          path="/javascript"
+          element={<PrivateRoute element={<Javascript />} />}
+        />
+        <Route
+          path="/typescript"
+          element={<PrivateRoute element={<Typescript />} />}
+        />
+        <Route path="/signedout" element={<SignedOut />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
