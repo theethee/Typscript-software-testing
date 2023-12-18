@@ -5,6 +5,8 @@ import burger from "../../assets/burger-menu.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+// Fixa kontroll om man är inloggad eller utloggad här?
+
 function Navbar() {
   const [isBurgerOpen, setisBugerOpen] = useState<boolean>(false);
   const [isAccountIconClicked, setIsAccountIconClicked] =
@@ -36,6 +38,8 @@ function Navbar() {
   const handleSignOut = () => {
     setIsSignedOutClicked(!isSignOutClicked);
     console.log("Sign out button is clicked");
+    localStorage.removeItem("isSignedIn");
+    console.log("Användaren är utloggad");
     navigate("/signedout");
   };
 

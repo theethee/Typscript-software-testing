@@ -22,6 +22,42 @@ app.use(cors());
 
 app.use(express.json());
 
+// app.get("/api/signin", async (req, res) => {
+//   try {
+//     const { rows } = await client.query("SELECT * FROM accounts");
+//     res.json(rows);
+//   } catch (error) {
+//     console.error("Varning gick inte att inloggade: ", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
+app.post("/api/signin", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res.status(400).send("Användare och lösenord krävs");
+    }
+    const result = await client.query(
+      "SELECT * FROM persons WHERE username = $1",
+      [username]
+    );
+    if (result.rows.length === 0) {
+      return res.status(401).send("fel användarnamn eller lösenord");
+    }
+    const user = result.rows[0];
+
+    if (password === user.password) {
+      res.status(200).json({ message: "Grattis inloggningen lyckades!" });
+    } else {
+      res.status(401).send("Fel användarnamn eller lösenrod");
+    }
+  } catch (error) {
+    console.error("Något gick fel: ", error);
+    res.status(500).send("Internal Server error");
+  }
+});
+
 // GET
 app.get("/api/users", async (_req, res) => {
   try {
