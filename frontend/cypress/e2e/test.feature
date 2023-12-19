@@ -23,6 +23,6 @@ Scenario: Navigering i landingpage
 
 Given Jag har nu hamnat i landingpage
 
-When Jag klickar mig runt på hemsidan
+When Jag klickar på my account och navigerar tillbaka
 
-Then Jag upptäcker my account och saved courses och all courses
+Then Jag upptäcker saved courses och all courses
