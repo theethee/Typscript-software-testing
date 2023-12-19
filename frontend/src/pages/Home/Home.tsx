@@ -86,7 +86,8 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
             Username/emal
           </label>
           <input
-            id="field-gap"
+            // id="field-gap"
+            id="username"
             className="sign-in-field"
             type="text"
             name="username"
@@ -98,6 +99,7 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
             Password
           </label>
           <input
+            id="password"
             className="sign-in-field"
             type="password"
             name="password"

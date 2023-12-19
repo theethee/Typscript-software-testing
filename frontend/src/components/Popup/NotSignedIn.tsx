@@ -15,8 +15,12 @@ const NotSignedIn: React.FC<NotSignedInPopupProps> = ({ onClose }) => {
           textAlign: "center",
         }}
       >
-        <h4 style={{ color: "red", fontSize: "20px" }}>Error</h4>
-        <p style={{ fontSize: "20px" }}>Wrong username or password.</p>
+        <h4 id="error-heading" style={{ color: "red", fontSize: "20px" }}>
+          Error
+        </h4>
+        <p id="warning-text" style={{ fontSize: "20px" }}>
+          Wrong username or password.
+        </p>
       </div>
     </div>
   );
