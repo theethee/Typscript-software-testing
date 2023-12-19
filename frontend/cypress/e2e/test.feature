@@ -18,3 +18,11 @@ Given Jag är fortfarande inne på Home-sidan
 When Jag skriver in rätt username och password
 
 Then Jag klickar på sign in-knappen navigeras till landingpage
+
+Scenario: Navigering i landingpage
+
+Given Jag har nu hamnat i landingpage
+
+When Jag klickar mig runt på hemsidan
+
+Then Jag upptäcker my account och saved courses och all courses
