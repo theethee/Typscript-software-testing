@@ -11,9 +11,4 @@ export default defineConfig({
       "/api": "http://localhost:3000/",
     },
   },
-  resolve: {
-    alias: {
-      "/src/main.jsx": "/src/main.tsx",
-    },
-  },
 });
