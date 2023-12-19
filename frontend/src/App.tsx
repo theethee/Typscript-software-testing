@@ -11,6 +11,7 @@ import Landing from "./pages/LandingPage/Landing";
 import Register from "./pages/Register/Register";
 import MyAccount from "./pages/MyAccount/MyAccount";
 import SignedOut from "./pages/SignedOut/SignedOut";
+import SavedCourses from "./pages/SavedCourses/SavedCourses";
 import { useState } from "react";
 
 const PrivateRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
@@ -57,6 +58,10 @@ function App() {
         <Route
           path="/typescript"
           element={<PrivateRoute element={<Typescript />} />}
+        />
+        <Route
+          path="/savedcourses"
+          element={<PrivateRoute element={<SavedCourses />} />}
         />
         <Route path="/signedout" element={<SignedOut />} />
       </Routes>

@@ -8,6 +8,8 @@ function Landing() {
   const [isAllCoursesClicked, setIsAllCoursesClicked] =
     useState<boolean>(false);
 
+  const [isSavedClicked, setIsSavedClicked] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   const handleMyAccount = () => {
@@ -18,6 +20,11 @@ function Landing() {
   const handleAllCourses = () => {
     setIsAllCoursesClicked(!isAllCoursesClicked);
     navigate("/allcourses");
+  };
+
+  const handleSavedCourses = () => {
+    setIsSavedClicked(!isSavedClicked);
+    navigate("/savedcourses");
   };
 
   return (
@@ -31,7 +38,9 @@ function Landing() {
           </button>
         </div>
         <div id="saved-courses">
-          <button className="landing-buttons">Saved courses</button>
+          <button className="landing-buttons" onClick={handleSavedCourses}>
+            Saved courses
+          </button>
         </div>
         <button
           id="all-courses"
