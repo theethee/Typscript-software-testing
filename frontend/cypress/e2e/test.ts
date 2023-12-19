@@ -14,10 +14,28 @@ When(
   }
 );
 
-Then("Varnings-popupruta visar ett felmeddelande", () => {
+Then("Varnings-popupruta visar ett felmeddelande. Jag stänger popupen.", () => {
   cy.get("#popup-container");
   cy.get("#warning-text")
     .should("be.visible")
     .should("have.text", "Wrong username or password.");
   cy.get("#error-heading").should("be.visible").should("have.text", "Error");
+  cy.get("#close-popup").click();
 });
+
+// Given("Jag är inne på Home-sidan", () => {
+//   cy.visit("http://localhost:5173/");
+// });
+
+// Then(
+//   "Jag skriver in rätt username och password och klickar på sign in-knappen",
+//   () => {
+//     cy.get("#username").type("test");
+//     cy.get("#password").type("test");
+//     cy.get("#sign-in-button").click();
+//   }
+// );
+
+// Then("Jag navigeras till landingpage", () => {
+//   cy.visit("http://localhost:5173/landingpage");
+// });

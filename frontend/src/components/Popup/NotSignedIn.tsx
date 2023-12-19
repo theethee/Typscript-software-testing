@@ -7,7 +7,9 @@ interface NotSignedInPopupProps {
 const NotSignedIn: React.FC<NotSignedInPopupProps> = ({ onClose }) => {
   return (
     <div id="popup-container">
-      <button onClick={onClose}>X</button>
+      <button id="close-popup" onClick={onClose}>
+        X
+      </button>
       <div
         style={{
           display: "flex",

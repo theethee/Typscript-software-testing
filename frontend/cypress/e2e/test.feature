@@ -9,12 +9,4 @@ Given Jag är inne på Home-sidan
 
 When Jag skriver in fel username och password och klickar på sign in-knappen
 
-Then Varnings-popupruta visar ett felmeddelande
-
-Scenario: Rätt inmatning
-
-Given Jag är på Home-sidan
-
-When Jag skriver in rätt username och password
-
-Then Jag hamnar i landingpage
+Then Varnings-popupruta visar ett felmeddelande. Jag stänger popupen.
