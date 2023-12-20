@@ -4,6 +4,40 @@
   align-items: center;
 }
 
+#edit-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.align-input-edit-icon {
+  display: flex;
+}
+
+.align-edit-icons {
+  justify-content: right;
+  margin-top: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.style-label {
+  font-size: 30px;
+}
+
+.input-styling {
+  background-color: #f0f0f0;
+  border: none;
+  width: 338px;
+  height: 75px;
+  font-size: 30px;
+  padding-left: 40px;
+}
+
+.input-styling:focus {
+  outline: none;
+}
+
 #no-img-picked {
   width: 200px;
   height: 200px;
@@ -23,26 +57,6 @@
 .change-icon {
   width: 36px;
   height: 40px;
-}
-
-.align-info {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-}
-
-.align-info img {
-  margin-left: 20px;
-  margin-top: 30px;
-}
-
-.p-styling {
-  font-size: 30px;
-}
-
-.align-under-p {
-  display: flex;
-  flex-direction: row;
 }
 
 #delete-account-button {
