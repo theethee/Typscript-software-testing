@@ -11,6 +11,7 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
   const [showNotSignedIn, setShowNotSignedIn] = useState(false);
   const [isRegLinkClicked, setIsRegLinkClicked] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -43,8 +44,10 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
 
       if (res.ok) {
         const data = await res.json();
+
         localStorage.setItem("user", JSON.stringify(data));
         localStorage.setItem("isSignedIn", "true");
+
         handleSignIn();
         navigate("/landingpage");
       } else {
@@ -63,6 +66,7 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
 
     console.log("username", username);
     console.log("password", password);
+
     console.log("UserData", userData);
   };
 

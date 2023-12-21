@@ -103,7 +103,68 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
-// PUT
+// GET
+// app.get("/api/edituser", async (_req, res) => {
+//   try {
+//     const { rows } = await client.query("SELECT * FROM persons");
+//     res.json(rows);
+//   } catch (error) {
+//     console.error("Vaning gick inte att fetcha persons: ", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
+app.get("/api/users/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    if (!userId) {
+      return res.status(400).send("Id krävs");
+    }
+
+    const result = await client.query("SELECT * FROM persons WHERE id = $1", [
+      userId,
+    ]);
+
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).send("Användaren hittades inte");
+    }
+  } catch (error) {
+    console.log("Något gick fel", error);
+    res.status(500).send("Internal Server error");
+  }
+});
+
+//PUT
+app.put("/api/users/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const updateUserInfo = req.body;
+    if (!userId || !updateUserInfo) {
+      return res.status(400).send("Id och användarinfo krävs");
+    }
+    const updateQuery = `UPDATE persons GET firstname = $1, lastname = $2, email = $3, username = $4 password = $5 WHERE id= $6 RETURNING *`;
+    const values = [
+      updateUserInfo.firstname || "",
+      updateUserInfo.lastname || "",
+      updateUserInfo.email || "",
+      updateUserInfo.username || "",
+      updateUserInfo.password || "",
+      userId,
+    ];
+
+    const result = await client.query(updateQuery, values);
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).send("Användaren hittades inte");
+    }
+  } catch (error) {
+    console.error("Något gick fel: ", error);
+    res.status(500).send("Internal Server error");
+  }
+});
 
 // DELETE
 
