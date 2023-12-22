@@ -41,11 +41,39 @@ function MyAccount() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:300/api/users/:userId`);
+      const userId = localStorage.getItem("userId");
+      const response = await fetch(`http://localhost:3000/api/users/${userId}`);
       const fetchUserData = await response.json();
       setUserData(fetchUserData);
+      console.log("userData", userData);
     } catch (error) {
       console.error("Det går inte att hämta användarinfo", error);
+    }
+  };
+
+  const handleChangeUserData = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await fetch(
+        `http://localhost:3000/api/users/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Grattis användarinformationen är nu uppdatterad");
+        fetchData();
+        setIsEditing(false);
+      } else {
+        console.error("Det gick inte att uppdatera använarinfo");
+      }
+    } catch (error) {
+      console.error("Något gick fel", error);
     }
   };
 
@@ -73,7 +101,11 @@ function MyAccount() {
             <input
               className="input-styling"
               type="text"
+              value={userData.username}
               readOnly={!isEditing}
+              onChange={(e) =>
+                setUserData({ ...userData, username: e.target.value })
+              }
             />
           </div>
 
@@ -84,7 +116,11 @@ function MyAccount() {
             <input
               className="input-styling"
               type="text"
+              value={userData.firstname}
               readOnly={!isEditing}
+              onChange={(e) =>
+                setUserData({ ...userData, firstname: e.target.value })
+              }
             />
           </div>
 
@@ -95,7 +131,11 @@ function MyAccount() {
             <input
               type="text"
               className="input-styling"
+              value={userData.lastname}
               readOnly={!isEditing}
+              onChange={(e) =>
+                setUserData({ ...userData, lastname: e.target.value })
+              }
             />
           </div>
 
@@ -106,7 +146,11 @@ function MyAccount() {
             <input
               className="input-styling"
               type="text"
+              value={userData.email}
               readOnly={!isEditing}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
             />
           </div>
 
@@ -117,13 +161,21 @@ function MyAccount() {
             <input
               className="input-styling"
               type="text"
+              value={userData.password}
               readOnly={!isEditing}
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
             />
           </div>
         </form>
 
         <div id="align-edit-delete-personinfo-btn">
-          {isEditing && <button id="save-changes-button">Save changes</button>}
+          {isEditing && (
+            <button onClick={handleChangeUserData} id="save-changes-button">
+              Save changes
+            </button>
+          )}
           <button
             id="style-edit-button"
             onClick={() => setIsEditing(!isEditing)}

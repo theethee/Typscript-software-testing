@@ -147,10 +147,11 @@ app.put("/api/users/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
     const updateUserInfo = req.body;
+
     if (!userId || !updateUserInfo) {
       return res.status(400).send("Id och användarinfo krävs");
     }
-    const updateQuery = `UPDATE persons GET firstname = $1, lastname = $2, email = $3, username = $4 password = $5 WHERE id= $6 RETURNING *`;
+    const updateQuery = `UPDATE persons SET firstname = $1, lastname = $2, email = $3, username = $4, password = $5 WHERE id= $6 RETURNING *`;
     const values = [
       updateUserInfo.firstname || "",
       updateUserInfo.lastname || "",
@@ -159,6 +160,8 @@ app.put("/api/users/:userId", async (req, res) => {
       updateUserInfo.password || "",
       userId,
     ];
+
+    console.log("update userinfo", updateUserInfo);
 
     const result = await client.query(updateQuery, values);
     if (result.rows.length > 0) {
