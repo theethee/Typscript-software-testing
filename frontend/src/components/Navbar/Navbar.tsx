@@ -5,13 +5,6 @@ import burger from "../../assets/burger-menu.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-// Fixa kontroll om man är inloggad eller utloggad här?
-
-// interface NavbarProps {
-//   isSignedIn: boolean;
-//   handleSignOut: () => void;
-// }
-
 function Navbar() {
   const [isBurgerOpen, setisBugerOpen] = useState<boolean>(false);
 
@@ -90,7 +83,7 @@ function Navbar() {
             <Link to="/allcourses" className="style-links-nav">
               All courses
             </Link>
-            <Link to="/htmlandcss" className="style-links-nav">
+            {/* <Link to="/htmlandcss" className="style-links-nav">
               HTML and CSS
             </Link>
             <Link to="/javascript" className="style-links-nav">
@@ -98,7 +91,7 @@ function Navbar() {
             </Link>
             <Link to="/typescript" className="style-links-nav">
               Typescript
-            </Link>
+            </Link> */}
             <button id="sign-out-btn" onClick={handleSignOutSubmit}>
               Sign out
             </button>
