@@ -42,6 +42,7 @@ function Register() {
 
       if (response.ok) {
         console.log("Grattis din registrering lyckades!");
+        navigate("/");
       } else {
         console.error("Fel vid registrering:", response.statusText);
       }

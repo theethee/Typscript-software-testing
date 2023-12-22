@@ -4,6 +4,7 @@ import addImg from "../../assets/add-image-icon.png";
 import edit from "../../assets/edit-icon.png";
 import deleteAccount from "../../assets/delete-icon-red.png";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MyAccount() {
   // 1. Ska hämta personuppgifter och visa
@@ -12,7 +13,8 @@ function MyAccount() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [userName, setUserName] = useState("");
-  // const [isDeleting, setIsDeleting] = useState(false);
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     username: "",
     firstname: "",
@@ -71,6 +73,31 @@ function MyAccount() {
         setIsEditing(false);
       } else {
         console.error("Det gick inte att uppdatera använarinfo");
+      }
+    } catch (error) {
+      console.error("Något gick fel", error);
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await fetch(
+        `http://localhost:3000/api/users/${userId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+      if (response.ok) {
+        console.log("Användaren är nu borttagen");
+        navigate("/");
+        localStorage.removeItem("isSignedIn");
+      } else {
+        console.error("Det gick inte att ta bort användaren");
       }
     } catch (error) {
       console.error("Något gick fel", error);
@@ -187,7 +214,7 @@ function MyAccount() {
         </div>
 
         <div id="align-delete-account-button">
-          <button id="delete-account-button">
+          <button id="delete-account-button" onClick={handleDeleteUser}>
             Delete
             <img
               id="delete-icon-red"

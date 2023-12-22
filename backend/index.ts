@@ -176,6 +176,28 @@ app.put("/api/users/:userId", async (req, res) => {
 });
 
 // DELETE
+app.delete("/api/users/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).send("Id krävs");
+    }
+    const deleteQuery = ` DELETE FROM persons WHERE id = $1 RETURNING *`;
+    const values = [userId];
+
+    const result = await client.query(deleteQuery, values);
+
+    if (result.rows.length > 0) {
+      res.json({ message: "Användaren är borttagen" });
+    } else {
+      res.status(404).send("Användare hittades inte");
+    }
+  } catch (error) {
+    console.error("Något fick fel", error);
+    res.status(500).send("Inetrnal Server error");
+  }
+});
 
 app.get("/api/accounts", async (_req, res) => {
   try {
