@@ -44,9 +44,14 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
 
       if (res.ok) {
         const data = await res.json();
-
-        localStorage.setItem("user", JSON.stringify(data));
+        const userId = data.user.id;
+        const username = data.user.username;
+        localStorage.setItem("username", username);
+        localStorage.setItem("userId", userId);
         localStorage.setItem("isSignedIn", "true");
+
+        console.log("data.username", data.username);
+        console.log("data", data);
 
         handleSignIn();
         navigate("/landingpage");

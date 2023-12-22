@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../LandingPage/Landing.css";
 import { useNavigate } from "react-router-dom";
 
 function Landing() {
+  const [username, setUserName] = useState("");
+
   const [isMyAccountClicked, setIsMyAccountClicked] = useState<boolean>(false);
 
   const [isAllCoursesClicked, setIsAllCoursesClicked] =
@@ -27,11 +29,25 @@ function Landing() {
     navigate("/savedcourses");
   };
 
+  useEffect(() => {
+    try {
+      const userName = localStorage.getItem("username");
+      if (userName) {
+        setUserName(userName);
+      }
+    } catch (error) {
+      console.error(
+        "Error kunde inte hämta användare från local storage",
+        error
+      );
+    }
+  });
+
   return (
     <>
       <div id="landing-container">
         <h1>NexGen</h1>
-        <h3>Welcom [Username]</h3>
+        <h3>Welcom {username}</h3>
         <div id="my-account">
           <button className="landing-buttons" onClick={handleMyAccount}>
             My account

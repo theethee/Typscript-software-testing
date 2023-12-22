@@ -48,7 +48,13 @@ app.post("/api/signin", async (req, res) => {
     const user = result.rows[0];
 
     if (password === user.password) {
-      res.status(200).json({ message: "Grattis inloggningen lyckades!" });
+      res.status(200).json({
+        message: "Grattis inloggningen lyckades!",
+        user: {
+          username: user.username,
+          id: user.id,
+        },
+      });
     } else {
       res.status(401).send("Fel användarnamn eller lösenrod");
     }

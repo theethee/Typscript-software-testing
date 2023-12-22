@@ -3,7 +3,7 @@ import noImg from "../../assets/user-icon.png";
 import addImg from "../../assets/add-image-icon.png";
 import edit from "../../assets/edit-icon.png";
 import deleteAccount from "../../assets/delete-icon-red.png";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function MyAccount() {
   // 1. Ska hämta personuppgifter och visa
@@ -11,6 +11,7 @@ function MyAccount() {
   // 3. Det ska gå att ta bort kontot
 
   const [isEditing, setIsEditing] = useState(false);
+  const [userName, setUserName] = useState("");
   // const [isDeleting, setIsDeleting] = useState(false);
   const [userData, setUserData] = useState({
     username: "",
@@ -18,6 +19,20 @@ function MyAccount() {
     lastname: "",
     email: "",
     password: "",
+  });
+
+  useEffect(() => {
+    try {
+      const userName = localStorage.getItem("username");
+      if (userName) {
+        setUserName(userName);
+      }
+    } catch (error) {
+      console.error(
+        "Error kunde inte hämta användare från local storage",
+        error
+      );
+    }
   });
 
   useEffect(() => {
@@ -40,7 +55,7 @@ function MyAccount() {
       <div id="my-account-container">
         <h1>NexGen</h1>
         <h3>My account</h3>
-
+        <h4>Hi {userName}</h4>
         <img
           id="no-img-picked"
           src={noImg}
