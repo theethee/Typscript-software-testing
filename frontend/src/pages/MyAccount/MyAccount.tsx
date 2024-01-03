@@ -5,8 +5,13 @@ import edit from "../../assets/edit-icon.png";
 import deleteAccount from "../../assets/delete-icon-red.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ChangedPersonInfo from "../../components/Popup/ChangedPersonInfo";
 
-function MyAccount() {
+interface MyAccountProps {
+  handleChangePersonInfo: () => void;
+}
+
+const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
   // 1. Ska hämta personuppgifter och visa
   // 2. Det ska gå att edita
   // 3. Det ska gå att ta bort kontot
@@ -14,6 +19,11 @@ function MyAccount() {
   const [isEditing, setIsEditing] = useState(false);
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const [showChangedInfo, setShowChangedInfo] = useState(false);
+
+  const handleChangedInfoPopup = () => {
+    setShowChangedInfo(false);
+  };
 
   const [userData, setUserData] = useState({
     username: "",
@@ -68,9 +78,10 @@ function MyAccount() {
       );
 
       if (response.ok) {
-        console.log("Grattis användarinformationen är nu uppdatterad");
+        console.log("Grattis användarinformationen är nu uppdaterad");
         fetchData();
         setIsEditing(false);
+        setShowChangedInfo(true);
       } else {
         console.error("Det gick inte att uppdatera använarinfo");
       }
@@ -110,15 +121,15 @@ function MyAccount() {
       <div id="my-account-container">
         <h1>NexGen</h1>
         <h3>My account</h3>
-        <h4>Hi {userName}</h4>
-        <img
+        {/* <h4>Hi {userName}</h4> */}
+        {/* <img
           id="no-img-picked"
           src={noImg}
           alt="icon show no imgage picked yet"
         />
         <div id="align-add-img">
           <img id="add-img" src={addImg} alt="icon to add image" />
-        </div>
+        </div> */}
 
         <form id="edit-form" /*onSubmit={handleChangeUserData}*/>
           <label className="style-label" htmlFor="text">
@@ -223,9 +234,14 @@ function MyAccount() {
             />
           </button>
         </div>
+        {showChangedInfo && (
+          <ChangedPersonInfo
+            onClose={handleChangedInfoPopup}
+          ></ChangedPersonInfo>
+        )}
       </div>
     </>
   );
-}
+};
 
 export default MyAccount;
