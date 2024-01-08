@@ -119,7 +119,7 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
           <a className="links">Forgot your password?</a>
           <button id="sign-in-button">Sign in</button>
           {/* Tror Link hade varit bättre här*/}
-          <a className="links" onClick={navigateToReg}>
+          <a id="reg-link" className="links" onClick={navigateToReg}>
             No account? Register here
           </a>
         </form>
