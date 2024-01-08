@@ -1,8 +1,16 @@
 // TDD
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import {
+  Before,
+  When,
+  Then,
+  Given,
+} from "@badeball/cypress-cucumber-preprocessor";
+
+Before(() => {
+  cy.visit("http://localhost:5173/");
+});
 
 Given("Jag är inne på Homesidan och klickar på Registerlänken.", () => {
-  cy.visit("http://localhost:5173/");
   cy.get("#reg-link").click();
 });
 
@@ -19,4 +27,15 @@ When(
 
 Then("Jag klickar på submit och navigeras till Homesidan.", () => {
   cy.get("#styling-reg-button").click();
+});
+
+Given("Jag är tillbaka på Home efter registrering.", () => {});
+
+When("Jag loggar in mig med nytt användarnamn och lösenord.", () => {
+  cy.get("#username").type("test");
+  cy.get("#password").type("test");
+});
+
+Then("Jag loggas in och hamnar i landingpage.", () => {
+  cy.get("#sign-in-button").click();
 });
