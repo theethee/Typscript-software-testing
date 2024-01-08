@@ -1,9 +1,16 @@
 // TDD
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import {
+  Before,
+  When,
+  Then,
+  Given,
+} from "@badeball/cypress-cucumber-preprocessor";
 
-Given("Jag är inne på Home-sidan", () => {
+Before(() => {
   cy.visit("http://localhost:5173/");
 });
+
+Given("Jag är inne på Home-sidan", () => {});
 
 When(
   "Jag skriver in fel username och password och klickar på sign in-knappen",
@@ -23,9 +30,7 @@ Then("Varnings-popupruta visar ett felmeddelande. Jag stänger popupen.", () => 
   cy.get("#close-popup").click();
 });
 
-Given("Jag är fortfarande inne på Home-sidan", () => {
-  cy.visit("http://localhost:5173/");
-});
+Given("Jag är fortfarande inne på Home-sidan", () => {});
 
 When("Jag skriver in rätt username och password", () => {
   cy.get("#username").type("test");
