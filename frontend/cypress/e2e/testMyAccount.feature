@@ -10,10 +10,10 @@ When Jag ändrar firstname och lastname.
 
 Then Jag sparar mina ändringar.
 
-Scenario: Raderar kontot.
+ Scenario: Raderar kontot.
 
-Given Jag befinner mig fortfarande i my account.
+ Given Jag loggar in och klickar på my account.
 
-When Jag klickar på Delete knappen.
+ When Jag kollar om deleteknappen finns.
 
-Then Kontot har tagits bort och jag navigeras till Homesidan.
+ Then Jag tar bort kontot och navigeras till Homesidan.
