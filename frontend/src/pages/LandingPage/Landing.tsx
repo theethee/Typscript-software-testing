@@ -49,7 +49,11 @@ function Landing() {
         <h1>NexGen</h1>
         <h3>Welcom {username}</h3>
         <div id="my-account">
-          <button className="landing-buttons" onClick={handleMyAccount}>
+          <button
+            id="my-account-button"
+            className="landing-buttons"
+            onClick={handleMyAccount}
+          >
             My account
           </button>
         </div>

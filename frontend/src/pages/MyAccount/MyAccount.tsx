@@ -1,6 +1,6 @@
 import "../MyAccount/MyAccount.css";
-import noImg from "../../assets/user-icon.png";
-import addImg from "../../assets/add-image-icon.png";
+// import noImg from "../../assets/user-icon.png";
+// import addImg from "../../assets/add-image-icon.png";
 import edit from "../../assets/edit-icon.png";
 import deleteAccount from "../../assets/delete-icon-red.png";
 import { useEffect, useState } from "react";
@@ -152,6 +152,7 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
           </label>
           <div className="align-input-edit-icon">
             <input
+              id="firstname"
               className="input-styling"
               type="text"
               value={userData.firstname}
@@ -168,6 +169,7 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
           <div className="align-input-edit-icon">
             <input
               type="text"
+              id="lastname"
               className="input-styling"
               value={userData.lastname}
               readOnly={!isEditing}
