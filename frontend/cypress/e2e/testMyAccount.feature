@@ -9,3 +9,11 @@ Given Jag loggar in mig själv och navigerar till my account.
 When Jag ändrar firstname och lastname.
 
 Then Jag sparar mina ändringar.
+
+Scenario: Raderar kontot.
+
+Given Jag befinner mig fortfarande i my account.
+
+When Jag klickar på Delete knappen.
+
+Then Kontot har tagits bort och jag navigeras till Homesidan.
