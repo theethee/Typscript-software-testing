@@ -19,6 +19,8 @@ function Landing() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          marginTop: "20%",
+          marginBottom: "50%",
         }}
       >
         <h1 style={{ fontSize: "30px" }}>You are signed out</h1>
