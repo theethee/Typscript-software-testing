@@ -9,11 +9,10 @@
   <body>
     <pre class="mermaid">
       sequenceDiagram
-  actor U as User
-  participant F as Frontend
-  participant B as Backend
-  participant DB as Databas
-
+      actor U as User
+      participant F as Frontend
+      participant B as Backend
+      participant DB as Databas
 
       U->>F: Navigerar till all courses
       F->>B: Laddar sidan
@@ -21,9 +20,6 @@
       DB-->>B: Skickar info om videos
       B-->>F: Skickar info om videos
       U->>F: Ser video-titel och knapp(URL)
-
-
-
     </pre>
   </body>
 </html>
