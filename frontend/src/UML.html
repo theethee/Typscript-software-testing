@@ -11,15 +11,19 @@
       sequenceDiagram
   actor U as User
   participant F as Frontend
-  participant E as Express
-  participant P as PostgreSQL
+  participant B as Backend
+  participant DB as Databas
 
-  U->>F: Clicks button
-  F->>E: fetch request
-  E->>P: SELECT statement
-  P-->>E: Rows
-  E-->>F: Replies with JSON
-  F-->>U: Displays data from JSON
+
+      U->>F: Navigerar till all courses
+      F->>B: Laddar sidan
+      B->>DB: Hämtar info om videos
+      DB-->>B: Skickar info om videos
+      B-->>F: Skickar info om videos
+      U->>F: Ser video-titel och knapp(URL)
+
+
+
     </pre>
   </body>
 </html>
