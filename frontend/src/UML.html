@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UML</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <pre class="mermaid">
+      sequenceDiagram
+  actor U as User
+  participant F as Frontend
+  participant E as Express
+  participant P as PostgreSQL
+
+  U->>F: Clicks button
+  F->>E: fetch request
+  E->>P: SELECT statement
+  P-->>E: Rows
+  E-->>F: Replies with JSON
+  F-->>U: Displays data from JSON
+    </pre>
+  </body>
+</html>
