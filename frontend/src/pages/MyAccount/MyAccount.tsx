@@ -7,15 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangedPersonInfo from "../../components/Popup/ChangedPersonInfo";
 
-interface MyAccountProps {
-  handleChangePersonInfo: () => void;
-}
-
-const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
-  // 1. Ska hämta personuppgifter och visa
-  // 2. Det ska gå att edita
-  // 3. Det ska gå att ta bort kontot
-
+const MyAccount: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
@@ -35,9 +27,9 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
 
   useEffect(() => {
     try {
-      const userName = localStorage.getItem("username");
-      if (userName) {
-        setUserName(userName);
+      const storedUserName = localStorage.getItem("username");
+      if (storedUserName) {
+        setUserName(storedUserName);
       }
     } catch (error) {
       console.error(
@@ -45,7 +37,7 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
         error
       );
     }
-  });
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -121,7 +113,7 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
       <div id="my-account-container">
         <h1>NexGen</h1>
         <h3>My account</h3>
-        {/* <h4>Hi {userName}</h4> */}
+
         {/* <img
           id="no-img-picked"
           src={noImg}
@@ -131,7 +123,7 @@ const MyAccount: React.FC<MyAccountProps> = ({ handleChangePersonInfo }) => {
           <img id="add-img" src={addImg} alt="icon to add image" />
         </div> */}
 
-        <form id="edit-form" /*onSubmit={handleChangeUserData}*/>
+        <form id="edit-form">
           <label className="style-label" htmlFor="text">
             Username
           </label>
