@@ -46,8 +46,8 @@ function Landing() {
   return (
     <>
       <div id="landing-container">
-        <h1>NexGen</h1>
-        <h3>Welcom {username}</h3>
+        <h1 style={{ fontSize: "50px" }}>NexGen</h1>
+        <h3 style={{ fontSize: "30px" }}>Welcom {username}</h3>
         <div id="my-account">
           <button
             id="my-account-button"

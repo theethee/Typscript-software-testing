@@ -44,8 +44,8 @@ function AllCourses() {
   return (
     <>
       <div id="all-courses-container">
-        <h1>NexGen</h1>
-        <h3>All courses</h3>
+        <h1 style={{ fontSize: "50px" }}>NexGen</h1>
+        <h3 style={{ fontSize: "30px" }}>All courses</h3>
         <div id="all-videos">
           {videos.map((video) => (
             <RenderCourses key={video.id} video={video}></RenderCourses>

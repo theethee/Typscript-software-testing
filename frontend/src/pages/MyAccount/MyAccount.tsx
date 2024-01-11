@@ -111,8 +111,8 @@ const MyAccount: React.FC = () => {
     <>
       {/* Ändra till formulär! */}
       <div id="my-account-container">
-        <h1>NexGen</h1>
-        <h3>My account</h3>
+        <h1 style={{ fontSize: "50px" }}>NexGen</h1>
+        <h3 style={{ fontSize: "30px" }}>My account</h3>
 
         {/* <img
           id="no-img-picked"

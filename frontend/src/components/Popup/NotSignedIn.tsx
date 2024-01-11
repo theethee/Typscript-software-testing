@@ -1,4 +1,5 @@
 import "../Popup/Popup.css";
+import Popup from "../Popup/Popup";
 
 interface NotSignedInPopupProps {
   onClose: () => void;
@@ -6,25 +7,12 @@ interface NotSignedInPopupProps {
 
 const NotSignedIn: React.FC<NotSignedInPopupProps> = ({ onClose }) => {
   return (
-    <div id="popup-container">
-      <button id="close-popup" onClick={onClose}>
-        X
-      </button>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-        }}
-      >
-        <h4 id="error-heading" style={{ color: "red", fontSize: "20px" }}>
-          Error
-        </h4>
-        <p id="warning-text" style={{ fontSize: "20px" }}>
-          Wrong username or password.
-        </p>
-      </div>
-    </div>
+    <Popup
+      onClose={onClose}
+      heading="Error"
+      text="Wrong username or password. Please try again!"
+      color="red"
+    ></Popup>
   );
 };
 
