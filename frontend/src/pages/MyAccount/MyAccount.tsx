@@ -213,7 +213,6 @@ const MyAccount: React.FC = () => {
             onClick={() => setIsEditing(!isEditing)}
           >
             {isEditing ? "Cancel" : "Edit"}
-            {/* ÄNRDA FÄRG PÅ IKONEN */}
             <img className="change-icon" src={edit} alt="edit icon" />
           </button>
         </div>

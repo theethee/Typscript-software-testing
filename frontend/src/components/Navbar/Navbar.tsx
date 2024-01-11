@@ -8,43 +8,28 @@ import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
   const [isBurgerOpen, setisBugerOpen] = useState<boolean>(false);
 
-  const [isAccountIconClicked, setIsAccountIconClicked] =
-    useState<boolean>(false);
-
-  const [isSignOutClicked, setIsSignedOutClicked] = useState<boolean>(false);
-
   const navigate = useNavigate();
 
-  const handleNexGen = () => {
-    setIsAccountIconClicked(false);
-    console.log("NexGen is clicked");
-    navigate("/");
+  const handleLinks = (path: string) => {
+    setisBugerOpen(false);
+    navigate(path);
   };
 
   const handleBurger = () => {
     setisBugerOpen(!isBurgerOpen);
-    setIsAccountIconClicked(false);
   };
 
-  const handleAccount = () => {
-    setIsAccountIconClicked(!isAccountIconClicked);
-
-    console.log("click");
-    navigate("/myaccount");
-  };
-
-  const handleSignOutSubmit = () => {
-    setIsSignedOutClicked(!isSignOutClicked);
-    console.log("Sign out button is clicked");
+  const handleSignOut = () => {
     localStorage.removeItem("isSignedIn");
     console.log("Användaren är utloggad");
     navigate("/signedout");
+    setisBugerOpen(false);
   };
 
   return (
     <>
       <div id="navbar-container">
-        <h1 id="NexGen-nav" onClick={handleNexGen}>
+        <h1 id="NexGen-nav" onClick={() => handleLinks("/")}>
           NexGen
         </h1>
         <div id="align-input-field">
@@ -60,7 +45,7 @@ function Navbar() {
             className="icons-nav"
             src={account}
             alt="accoutn icon"
-            onClick={handleAccount}
+            onClick={() => handleLinks("/myaccount")}
           />
           <img
             className="icons-nav"
@@ -75,16 +60,25 @@ function Navbar() {
               style={{ marginTop: "25%" }}
               to="/"
               className="style-links-nav"
+              onClick={() => handleLinks("/")}
             >
               Home
             </Link>
-            <Link to="/myaccount" className="style-links-nav">
+            <Link
+              to="/myaccount"
+              className="style-links-nav"
+              onClick={() => handleLinks("/myaccount")}
+            >
               My account
             </Link>
-            <Link to="/allcourses" className="style-links-nav">
+            <Link
+              to="/allcourses"
+              className="style-links-nav"
+              onClick={() => handleLinks("/allcourses")}
+            >
               All courses
             </Link>
-            <button id="sign-out-btn" onClick={handleSignOutSubmit}>
+            <button id="sign-out-btn" onClick={handleSignOut}>
               Sign out
             </button>
           </div>

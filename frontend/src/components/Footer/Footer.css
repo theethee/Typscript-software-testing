@@ -3,23 +3,19 @@
   flex-direction: row;
   align-items: center;
   background-color: #39446b;
-  width: 100%;
-  box-sizing: border-box;
+  /* box-sizing: content-box; */
   color: #ffff;
   padding-bottom: 10px;
-  /* position: fixed;
-  bottom: 0;
-  left: 0; */
-  /* text-align: center; */
   justify-content: center;
   margin-top: 50px;
+  width: 100%;
 }
 
 #align-icons {
   display: flex;
   flex-direction: row;
   margin-left: 30px;
-  margin-top: 250px;
+  padding-top: 250px;
 }
 
 .icons {
