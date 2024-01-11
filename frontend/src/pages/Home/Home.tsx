@@ -96,7 +96,7 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
   return (
     <>
       <div id="home-container">
-        <h1>NexGen</h1>
+        <h1 style={{ fontSize: "50px" }}>NexGen</h1>
         <form onSubmit={handleSignInSubmit} id="home-form">
           <label className="input-text" htmlFor="username">
             Username/emal

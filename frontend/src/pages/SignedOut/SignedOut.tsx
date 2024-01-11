@@ -24,7 +24,10 @@ function Landing() {
         }}
       >
         <h1 style={{ fontSize: "30px" }}>You are signed out</h1>
-        <a style={{ cursor: "pointer" }} onClick={navToSignIn}>
+        <a
+          style={{ cursor: "pointer", marginBottom: "4%" }}
+          onClick={navToSignIn}
+        >
           Sign in
         </a>
       </div>

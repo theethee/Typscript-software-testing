@@ -123,7 +123,11 @@ function Register() {
 
           <button id="styling-reg-button">Submit</button>
           <a
-            style={{ marginTop: "20px", cursor: "pointer", fontSize: "20px" }}
+            style={{
+              marginTop: "20px",
+              cursor: "pointer",
+              fontSize: "20px",
+            }}
             onClick={handleBackToSignIn}
           >
             Back to sign in
