@@ -11,27 +11,24 @@ function Navbar() {
   const [isAccountIconClicked, setIsAccountIconClicked] =
     useState<boolean>(false);
 
-  const [isNexgenClicked, setIsNexGenClicked] = useState<boolean>(false);
-
   const [isSignOutClicked, setIsSignedOutClicked] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
-  // När man är inloggad ska man komma till all courses
   const handleNexGen = () => {
-    setIsNexGenClicked(!isNexgenClicked);
+    setIsAccountIconClicked(false);
     console.log("NexGen is clicked");
     navigate("/");
   };
 
   const handleBurger = () => {
     setisBugerOpen(!isBurgerOpen);
+    setIsAccountIconClicked(false);
   };
 
-  // MEN BARA OM MAN ÄR INLOGGAD!
-  // Måste ändra senare!
   const handleAccount = () => {
     setIsAccountIconClicked(!isAccountIconClicked);
+
     console.log("click");
     navigate("/myaccount");
   };
@@ -83,15 +80,6 @@ function Navbar() {
             <Link to="/allcourses" className="style-links-nav">
               All courses
             </Link>
-            {/* <Link to="/htmlandcss" className="style-links-nav">
-              HTML and CSS
-            </Link>
-            <Link to="/javascript" className="style-links-nav">
-              Javascript
-            </Link>
-            <Link to="/typescript" className="style-links-nav">
-              Typescript
-            </Link> */}
             <button id="sign-out-btn" onClick={handleSignOutSubmit}>
               Sign out
             </button>

@@ -1,13 +1,8 @@
 import { useState } from "react";
 import "../Register/Register.css";
 import { useNavigate } from "react-router-dom";
-import ChangedPersonInfo from "../../components/Popup/ChangedPersonInfo";
 
-interface RegisterProps {
-  handleChangePersonInfo: () => void;
-}
-
-const Register: React.FC<RegisterProps> = ({ handleChangePersonInfo }) => {
+function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
@@ -15,13 +10,8 @@ const Register: React.FC<RegisterProps> = ({ handleChangePersonInfo }) => {
   const [PassWord, setPassWord] = useState("");
   const [isBackToSignInClicked, setBackToSignInClicked] =
     useState<boolean>(false);
-  const [showChangePersonInfoSuccess, setShowChangePersonInfoSuccess] =
-    useState(false);
-  const navigate = useNavigate();
 
-  const handleChangePersonInfoPopup = () => {
-    setShowChangePersonInfoSuccess(false);
-  };
+  const navigate = useNavigate();
 
   const handleBackToSignIn = () => {
     setBackToSignInClicked(!isBackToSignInClicked);
@@ -131,17 +121,6 @@ const Register: React.FC<RegisterProps> = ({ handleChangePersonInfo }) => {
             required
           />
 
-          {/* <label className="reg-label">Repeat password</label>
-          <input
-            className="styling-reg-input"
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          /> */}
-
           <button id="styling-reg-button">Submit</button>
           <a
             style={{ marginTop: "20px", cursor: "pointer", fontSize: "20px" }}
@@ -150,14 +129,9 @@ const Register: React.FC<RegisterProps> = ({ handleChangePersonInfo }) => {
             Back to sign in
           </a>
         </form>
-        {showChangePersonInfoSuccess && (
-          <ChangedPersonInfo
-            onClose={handleChangePersonInfoPopup}
-          ></ChangedPersonInfo>
-        )}
       </div>
     </>
   );
-};
+}
 
 export default Register;
