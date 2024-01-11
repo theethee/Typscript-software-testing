@@ -12,12 +12,12 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const [showNotSignedIn, setShowNotSignedIn] = useState(false);
+  const [showNotSignedInPopup, setShowNotSignedInPopup] = useState(false);
   const [isRegLinkClicked, setIsRegLinkClicked] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleSignInPopup = () => {
-    setShowNotSignedIn(false);
+    setShowNotSignedInPopup(false);
   };
 
   const navigateToReg = () => {
@@ -27,52 +27,59 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
 
   const handleSignInSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("handle submit in HOME");
 
-    const userData = {
+    const userData: { username: string; password: string } = {
       username: username,
       password: password,
     };
+
     try {
-      const res = await fetch("http://localhost:3000/api/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const data = await SignInRequest(userData);
 
-      if (res.ok) {
-        const data = await res.json();
-        const userId = data.user.id;
-        const username = data.user.username;
-        localStorage.setItem("username", username);
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("isSignedIn", "true");
-
-        console.log("data.username", data.username);
-        console.log("data", data);
-
-        handleSignIn();
-        navigate("/landingpage");
+      if (data) {
+        handleSignInSuccess(data);
       } else {
-        console.error("Fel användare eller löseornd");
-        setShowNotSignedIn(true);
+        handleSignInError();
       }
     } catch (error) {
+      handleSignInError();
       console.log("Något gick fel", error);
     }
+  };
 
-    // När man skrivit in fel användarnamn eller lösenord ska en Varningspopup dyka upp!
+  const SignInRequest = async (userData: {
+    username: string;
+    password: string;
+  }) => {
+    const res = await fetch("http://localhost:3000/api/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    return res.ok ? await res.json() : null;
+  };
 
-    // IMORGON: Fixa resten av CRUDEN till att ta bort och ändra personuppgifter
+  const handleSignInSuccess = (data: {
+    user: { id: string; username: string };
+  }) => {
+    const userId = data.user.id;
+    const username = data.user.username;
+    localStorage.setItem("username", username);
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("isSignedIn", "true");
 
-    // Tisdag börja med TDD och BDD!
+    console.log("data.username", data.user.username);
+    console.log("data", data);
 
-    console.log("username", username);
-    console.log("password", password);
+    handleSignIn();
+    navigate("/landingpage");
+  };
 
-    console.log("UserData", userData);
+  const handleSignInError = () => {
+    console.error("Fel användare eller löseornd");
+    setShowNotSignedInPopup(true);
   };
 
   useEffect(() => {
@@ -95,7 +102,6 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
             Username/emal
           </label>
           <input
-            // id="field-gap"
             id="username"
             className="sign-in-field"
             type="text"
@@ -118,12 +124,11 @@ const Home: React.FC<HomeProps> = ({ handleSignIn }) => {
           />
           <a className="links">Forgot your password?</a>
           <button id="sign-in-button">Sign in</button>
-          {/* Tror Link hade varit bättre här*/}
           <a id="reg-link" className="links" onClick={navigateToReg}>
             No account? Register here
           </a>
         </form>
-        {showNotSignedIn && (
+        {showNotSignedInPopup && (
           <NotSignedInPopup onClose={handleSignInPopup}></NotSignedInPopup>
         )}
       </div>
