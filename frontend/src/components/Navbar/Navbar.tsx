@@ -71,7 +71,11 @@ function Navbar() {
         </div>
         {isBurgerOpen && (
           <div id="burger-menu">
-            <Link to="/" className="style-links-nav">
+            <Link
+              style={{ marginTop: "25%" }}
+              to="/"
+              className="style-links-nav"
+            >
               Home
             </Link>
             <Link to="/myaccount" className="style-links-nav">
