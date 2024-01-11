@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "../Register/Register.css";
 import { useNavigate } from "react-router-dom";
+import ChangedPersonInfo from "../../components/Popup/ChangedPersonInfo";
 
-function Register() {
+interface RegisterProps {
+  handleChangePersonInfo: () => void;
+}
+
+const Register: React.FC<RegisterProps> = ({ handleChangePersonInfo }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
@@ -10,7 +15,13 @@ function Register() {
   const [PassWord, setPassWord] = useState("");
   const [isBackToSignInClicked, setBackToSignInClicked] =
     useState<boolean>(false);
+  const [showChangePersonInfoSuccess, setShowChangePersonInfoSuccess] =
+    useState(false);
   const navigate = useNavigate();
+
+  const handleChangePersonInfoPopup = () => {
+    setShowChangePersonInfoSuccess(false);
+  };
 
   const handleBackToSignIn = () => {
     setBackToSignInClicked(!isBackToSignInClicked);
@@ -139,9 +150,14 @@ function Register() {
             Back to sign in
           </a>
         </form>
+        {showChangePersonInfoSuccess && (
+          <ChangedPersonInfo
+            onClose={handleChangePersonInfoPopup}
+          ></ChangedPersonInfo>
+        )}
       </div>
     </>
   );
-}
+};
 
 export default Register;
