@@ -8,8 +8,6 @@ const port = process.env.PORT || 3000;
 
 dotenv.config();
 
-require("dotenv").config();
-
 const client = new Client({
   connectionString: process.env.PGURI,
 });
