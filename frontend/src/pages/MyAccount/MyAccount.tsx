@@ -117,6 +117,7 @@ const MyAccount: React.FC = () => {
   return (
     <>
       <img
+        className="arrow-back"
         style={{ width: "40px", marginTop: "15px", cursor: "pointer" }}
         src={arrowBack}
         alt="Arrow back"
