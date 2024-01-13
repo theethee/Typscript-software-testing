@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../AllCourses/Courses.css";
+import { useNavigate } from "react-router-dom";
+import arrowBack from "../../assets/arrow-back-icon.png";
 
 interface Video {
   id: number;
@@ -35,6 +37,15 @@ const RenderCourses: React.FC<{ video: Video }> = ({ video }) => {
 };
 
 function AllCourses() {
+  const [isArrowClicked, setIsArrowClicked] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const handleArrowBack = () => {
+    setIsArrowClicked(!isArrowClicked);
+    navigate("/landingpage");
+  };
+
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
@@ -43,6 +54,12 @@ function AllCourses() {
 
   return (
     <>
+      <img
+        style={{ width: "40px", marginTop: "15px", cursor: "pointer" }}
+        src={arrowBack}
+        alt="Arrow back"
+        onClick={handleArrowBack}
+      />
       <div id="all-courses-container">
         <h1 style={{ fontSize: "50px" }}>NexGen</h1>
         <h3 style={{ fontSize: "30px" }}>All courses</h3>

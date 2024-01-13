@@ -6,12 +6,19 @@ import deleteAccount from "../../assets/delete-icon-red.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangedPersonInfo from "../../components/Popup/ChangedPersonInfo";
+import arrowBack from "../../assets/arrow-back-icon.png";
 
 const MyAccount: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [_userName, setUserName] = useState("");
   const navigate = useNavigate();
   const [showChangedInfo, setShowChangedInfo] = useState(false);
+  const [isArrowClicked, setIsArrowClicked] = useState<boolean>(false);
+
+  const handleArrowBack = () => {
+    setIsArrowClicked(!isArrowClicked);
+    navigate("/landingpage");
+  };
 
   const handleChangedInfoPopup = () => {
     setShowChangedInfo(false);
@@ -109,7 +116,12 @@ const MyAccount: React.FC = () => {
 
   return (
     <>
-      {/* Ändra till formulär! */}
+      <img
+        style={{ width: "40px", marginTop: "15px", cursor: "pointer" }}
+        src={arrowBack}
+        alt="Arrow back"
+        onClick={handleArrowBack}
+      />
       <div id="my-account-container">
         <h1 style={{ fontSize: "50px" }}>NexGen</h1>
         <h3 style={{ fontSize: "30px" }}>My account</h3>
@@ -117,7 +129,7 @@ const MyAccount: React.FC = () => {
         {/* <img
           id="no-img-picked"
           src={noImg}
-          alt="icon show no imgage picked yet"
+          alt="icon show no imgae picked yet"
         />
         <div id="align-add-img">
           <img id="add-img" src={addImg} alt="icon to add image" />
