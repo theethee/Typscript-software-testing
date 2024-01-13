@@ -48,6 +48,7 @@ function Navbar() {
             onClick={() => handleLinks("/myaccount")}
           />
           <img
+            id="burger"
             className="icons-nav"
             onClick={handleBurger}
             src={burger}
